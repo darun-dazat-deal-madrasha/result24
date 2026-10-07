@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087f4e">
+  <meta name="description" content="দারুন নাজাত আইডিয়াল মাদরাসার পরীক্ষার ফলাফল দেখুন">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="apple-touch-icon" href="logo-192.png">
+  <title>দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-header">
+    <div class="nav container">
+      <a class="brand" href="#" aria-label="হোম">
+        <img class="logo" src="logo.jpg" alt="দারুন নাজাত আইডিয়াল মাদরাসার লোগো">
+        <div class="brand-text">
+          <strong>দারুন নাজাত আইডিয়াল মাদরাসা</strong>
+          <span>ফলাফল প্রকাশনা</span>
+        </div>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="মেনু" aria-expanded="false">☰</button>
+    </div>
+    <div class="hero">
+      <div class="container">
+        <h1>দারুন নাজাত আইডিয়াল মাদরাসা</h1>
+        <p>আবুতোরাব, মিরসরাই, চট্টগ্রাম। মোবাইল: 01623257140</p>
+        <small>পরীক্ষার ফলাফল অনলাইনে দেখুন</small>
+      </div>
+    </div>
+  </header>
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <nav id="mobileMenu" aria-label="মেইন মেনু">
+    <button class="menu-close" id="menuClose" aria-label="মেনু বন্ধ করুন">×</button>
+    <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
+    <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
+    <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
+    <a href="#aplus" data-view="aplus">A+ ও মেধা তালিকা</a>
+  </nav>
+  <main class="container main">
+    <section class="result-card" id="personalPanel">
+      <div class="section-title">
+        <span class="title-icon">🎓</span>
+        <div>
+          <h2>ব্যক্তিগত ফলাফল</h2>
+          <p>সাল, পরীক্ষা, শ্রেণি ও রোল নম্বর দিয়ে ফলাফল খুঁজুন</p>
+        </div>
+      </div>
+      <form id="resultForm" novalidate>
+        <div class="field select-field">
+          <label for="resultYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="resultYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="exam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="exam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+        </div>
+        <div class="field select-field">
+          <label for="className">শ্রেণি নির্বাচন করুন <b>*</b></label>
+          <select id="className" required disabled><option value="">-- আগে সাল নির্বাচন করুন --</option></select>
+          <span class="field-help" id="classHelp">প্রথমে সাল নির্বাচন করুন</span>
+        </div>
+        <div class="field">
+          <label for="roll">রোল নম্বর (ইংরেজিতে লিখুন) <b>*</b></label>
+          <input id="roll" type="text" inputmode="numeric" placeholder="XXXXXX" required>
+        </div>
+        <div class="actions">
+          <button type="reset" class="btn btn-light">পুনরায় সেট করুন</button>
+          <button type="submit" class="btn btn-primary">অনুসন্ধান করুন</button>
+        </div>
+      </form>
+      <div id="message" class="message hidden"></div>
+    </section>
+    <section id="resultArea" class="result-output hidden"></section>
+    <section class="result-card hidden" id="classPanel">
+      <div class="section-title">
+        <span class="title-icon">📚</span>
+        <div>
+          <h2>ক্লাসওয়ারী ফলাফল</h2>
+          <p>শুধু সাল ও শ্রেণি নির্বাচন করে পুরো ক্লাসের ফলাফল দেখুন</p>
+        </div>
+      </div>
+      <form id="classWiseForm" novalidate>
+        <div class="field select-field">
+          <label for="classYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="classYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="classWiseExam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="classWiseExam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+        </div>
+        <div class="field select-field">
+          <label for="classWiseName">শ্রেণি নির্বাচন করুন <b>*</b></label>
+          <select id="classWiseName" required disabled><option value="">-- আগে সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="actions single-action">
+          <button type="submit" class="btn btn-primary">ফলাফল দেখুন</button>
+        </div>
+      </form>
+      <div id="classWiseResult" class="classwise-output hidden"></div>
+    </section>
+    <section class="result-card aplus-card hidden" id="aplusPanel">
+      <div class="section-title">
+        <span class="title-icon">🏆</span>
+        <div>
+          <h2>A+ ও মেধা তালিকা</h2>
+          <p>তালিকা, সাল ও পরীক্ষা নির্বাচন করে তালিকা দেখুন</p>
+        </div>
+      </div>
+      <form id="listForm" novalidate>
+        <div class="field select-field">
+          <label for="listType">তালিকা নির্বাচন করুন <b>*</b></label>
+          <select id="listType" required>
+            <option value="">-- তালিকা নির্বাচন করুন --</option>
+            <option value="aplus">A+ প্রাপ্তদের তালিকা</option>
+            <option value="merit">মেধা তালিকা</option>
+          </select>
+        </div>
+        <div class="field select-field">
+          <label for="listYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="listYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="listExam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="listExam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+        </div>
+        <div class="actions single-action">
+          <button type="submit" class="btn btn-primary">অনুসন্ধান করুন</button>
+        </div>
+      </form>
+      <div id="aplusMeta" class="aplus-meta"></div>
+      <div id="aplusResult" class="aplus-table-wrap hidden"></div>
+      <div class="print-row hidden" id="listPrintRow">
+        <button class="print-btn" onclick="printAPlusResult()">🖨 তালিকা প্রিন্ট / PDF</button>
+      </div>
+    </section>
+    <section id="notice" class="info-card">
+      <h3>📢 ফলাফল দেখার নির্দেশনা</h3>
+      <ul>
+        <li>ব্যক্তিগত ফলাফলের জন্য সাল, পরীক্ষা, শ্রেণি ও রোল নম্বর নির্বাচন করুন।</li>
+        <li>ক্লাসওয়ারী ফলাফলের জন্য শুধু সাল ও শ্রেণি নির্বাচন করুন।</li>
+        <li>তথ্য না মিললে মাদ্রাসা কর্তৃপক্ষের সঙ্গে যোগাযোগ করুন।</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> দারুন নাজাত আইডিয়াল মাদরাসা<div class="footer-sub">সকল অধিকার সংরক্ষিত</div></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
